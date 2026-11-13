@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto | Apple</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+  <link rel="stylesheet" href="pa3.css">
+</head>
+<body>
+  <div class="pagina">
+
+    <!-- ENCABEZADO Y MENÚ -->
+    <header>
+      <a class="logo" href="index.html">Apple</a>
+      <nav>
+        <ul>
+          <li><a href="index.html"><i class="fa-solid fa-house"></i> INICIO</a></li>
+          <li><a href="nosotros.html"><i class="fa-solid fa-users"></i> NOSOTROS</a></li>
+          <li><a href="blog.html"><i class="fa-solid fa-pen"></i> BLOG</a></li>
+          <li><a href="galeria.html"><i class="fa-solid fa-image"></i> GALERÍA</a></li>
+          <li><a href="videos.html"><i class="fa-solid fa-video"></i> VIDEOS</a></li>
+          <li><a class="activo" href="contactos.html"><i class="fa-solid fa-address-book"></i> CONTACTO</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ZONA CON DEGRADADO: TABLA + FORMULARIO -->
+      <section class="degradado">
+        <div class="contacto-grid">
+
+          <!-- TABLA -->
+          <div>
+            <table>
+              <tr>
+                <th colspan="2">Información de Contacto</th>
+              </tr>
+              <tr>
+                <td>Dirección</td>
+                <td>ISIL LA MOLINA 👻</td>
+              </tr>
+              <tr>
+                <td>Teléfonos</td>
+                <td>997 577 470 | 980 978 484 | (01) 533 5242</td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td>info@apple-tienda.com</td>
+              </tr>
+              <tr>
+                <th colspan="2">Horarios de Atención Presencial</th>
+              </tr>
+              <tr>
+                <td rowspan="2">Tienda Apple</td>
+                <td>Lunes a viernes: 9 a.m. a 8 p.m.</td>
+              </tr>
+              <tr>
+                <td>Sábado y domingo: 10 a.m. a 6 p.m.</td>
+              </tr>
+            </table>
+            <img class="foto-contacto" src="imagenes/iphone.jpg" alt="Persona usando un iPhone">
+          </div>
+
+          <!-- FORMULARIO -->
+          <form id="formulario">
+            <label for="nombre">Nombre y Apellido*</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Ej: Pedro castillo" minlength="3" required>
+
+            <label for="celular">Celular*</label>
+            <input type="tel" id="celular" name="celular" placeholder="999999999" pattern="[0-9]{9}" required>
+
+            <label for="correo">Correo electrónico*</label>
+            <input type="email" id="correo" name="correo" placeholder="nombre@dominio.com" required>
+
+            <label for="producto">Producto de interés (opcional)</label>
+            <select id="producto" name="producto">
+              <option value="">Elige una opción</option>
+              <option>iPhone</option>
+              <option>MacBook</option>
+              <option>iPad</option>
+              <option>Apple Watch</option>
+              <option>AirPods</option>
+            </select>
+
+            <label for="mensaje">Mensaje*</label>
+            <textarea id="mensaje" name="mensaje" rows="5" maxlength="200" placeholder="Cuéntanos cómo podemos ayudarte" required></textarea>
+            <p id="contador">0 / 200</p>
+
+            <button type="submit" class="boton">ENVIAR</button>
+            <p id="mensaje-exito"></p>
+          </form>
+
+        </div>
+      </section>
+
+      <!-- MAPA -->
+      <section>
+        <h2 class="barra">Local Central</h2>
+        <div class="mapa-caja">
+          <iframe
+  src="https://maps.google.com/maps?q=ISIL+La+Molina+Lima+Peru&output=embed"
+  title="Mapa de ubicación de ISIL La Molina"
+  loading="lazy"></iframe>
+        </div>
+      </section>
+    </main>
+
+    <!-- REDES SOCIALES -->
+    <footer>
+      <div class="redes">
+        <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- INTERACCIÓN DEL FORMULARIO -->
+  <script>
+    var formulario = document.getElementById("formulario");
+    var mensaje = document.getElementById("mensaje");
+    var contador = document.getElementById("contador");
+    var exito = document.getElementById("mensaje-exito");
+
+    // Cuenta las letras mientras escribes
+    mensaje.addEventListener("input", function () {
+      contador.textContent = mensaje.value.length + " / 200";
+    });
+
+    // Al enviar: no recarga la página y muestra un mensaje
+    formulario.addEventListener("submit", function (evento) {
+      evento.preventDefault();
+      var nombre = document.getElementById("nombre").value;
+      exito.textContent = "¡Gracias, " + nombre + "! Recibimos tu mensaje.";
+      exito.style.display = "block";
+      formulario.reset();
+      contador.textContent = "0 / 200";
+    });
+  </script>
+
+</body>
+</html>
